@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Registrationt</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+        <div style="display: flex; flex-direction: row; justify-content: space-around;">
+            <div class="bg-dark text-light mx-2 p-4 mt-3" style="border-radius: 10px;">
+                <h1 class="text-info">Register</h1>
+                {% with messages = get_flashed_messages(category_filter=['register']) %}
+                    {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        <strong>ERROR!!!!</strong>
+                            {% for message in messages %}
+                            <p>{{message}}</p>
+                            {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                <form action="/create" method="POST">
+                    <label for="first_name" style="display: block; padding-top: 10px;">First Name:</label>
+                    <input type="text" name="first_name" placeholder="Insert your First Name"class="form-control">
+                    
+                    <label for="last_name"style="display: block; padding-top: 10px;">Last Name:</label>
+                    <input type="text" name="last_name" placeholder="Insert your Last Name" class="form-control">
+
+                    <label for="email"style="display: block; padding-top: 10px;">Email:</label>
+                    <input type="text" name="email" placeholder="Insert your email" class="form-control">
+
+                    <label for="password" style="display: block; padding-top: 10px;">Password:</label>
+                    <input type="password" name="password" placeholder="Insert your password" class="form-control">
+
+                    <label for="confirm" style="display: block; padding-top: 10px;">Confirm Password:</label>
+                    <input type="password" name="confirm" placeholder="Insert your password" class="form-control">
+                
+                    <div style="margin: 10px;"> <input type="submit" value="Register" class="btn btn-success">
+                    </div>
+                </form>
+            </div>
+            <div>
+                <div class="bg-dark text-light mx-2 p-4 mt-3" style="border-radius: 10px;">
+                    
+                    
+                    <form action="/login" method="POST" >
+                        <h1 class="text-info">Login</h1>
+                        {% with messages = get_flashed_messages(category_filter=['login']) %}
+                        {% if messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <strong>ERROR!!</strong>
+                                {% for message in messages %}
+                                <p>{{message}}</p>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                        <label style="display: block; padding-top: 10px;">Email:</label>
+                        <input type="text" name="email" placeholder="Insert your email"/>
+        
+                        <label style="display: block; padding-top: 10px;">Password:</label>
+                        <input type="password" name="password" placeholder="Insert your password"/>
+                      
+
+                        <div style="margin: 10px;"> <input type="submit" value="Login" class="btn btn-primary">
+                     </div>
+
+                    </form>
+            </div>
+            
+        </div>
+ 
+</body>
+</html>
